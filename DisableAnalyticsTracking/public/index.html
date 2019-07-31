@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <script>
+      var signedInKey = 'unique-customer-is-signed-in';
+
+      function readCookie(cookieKey) {
+        const cookie = document.cookie.split(';').find(x => x.trim().startsWith(cookieKey));
+        if (!cookie) {
+          return null;
+        }
+        const splitAt = cookie.indexOf('=') + 1;
+        return cookie.slice(splitAt);
+      }
+    </script>
+    <script>
+      +function(l,y,t,i,c,s,o) {
+          l['LocalyticsGlobal'] = i;
+          l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
+          l[i].t = +new Date;
+          (s = y.createElement(t)).type = 'text/javascript';
+          s.src = '//web-sdk-artifacts.s3.amazonaws.com/localytics.min.js';
+          (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
+          console.log('is signed is: %s', readCookie(signedInKey) === 'true');
+          /* Unique initialization, check if a user is signed in before tracking */
+          var myLocalyticsKey = "YOUR-LOCALYTICS-APP-KEY";
+          ll(
+            'init',
+            myLocalyticsKey,
+            { disableAnalyticsTracking: readCookie(signedInKey) !== 'true' }
+          );
+      }(window, document, 'script', 'll');
+    </script>
+    <title>Localytics Sample</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

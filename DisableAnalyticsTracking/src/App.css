@@ -1,0 +1,22 @@
+.App {
+  padding: 1rem;
+}
+
+button {
+  cursor: pointer;
+  display: block;
+  width: 200px;
+}
+
+@keyframes new-event {
+  from {
+    color: #42a5f5;
+  }
+  to {
+    color: inherit;
+  }
+}
+
+.EventListItem {
+  animation: new-event 1 2s;
+}
