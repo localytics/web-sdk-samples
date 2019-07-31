@@ -23,7 +23,7 @@
           l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
           l[i].t = +new Date;
           (s = y.createElement(t)).type = 'text/javascript';
-          s.src = '//web-sdk-artifacts.s3.amazonaws.com/localytics.min.js';
+          s.src = '//web.localytics.com/v4/localytics.min.js';
           (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
           console.log('is signed is: %s', readCookie(signedInKey) === 'true');
           /* Unique initialization, check if a user is signed in before tracking */
