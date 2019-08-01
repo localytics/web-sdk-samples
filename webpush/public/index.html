@@ -19,7 +19,7 @@
       ll(
         'init',
         myLocalyticsKey,
-        { publicKey: myWebPushPublicKey, allowLogs: true }
+        { publicKey: myWebPushPublicKey, allowLogs: true, workerName: 'worker.js', workerPath: '/' }
       );
     }(window, document, 'script', 'll');
   </script>
