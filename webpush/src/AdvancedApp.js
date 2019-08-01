@@ -16,28 +16,30 @@ class AdvancedApp extends React.Component {
   };
 
   registerSW = () => {
-    if ('serviceWorker' in navigator && 'Notification' in window) {
-      window.ll('registerServiceWorker', (swReg) => {
-        if (swReg) {
-          this.setState({
-            serviceWorkerEnabled: true,
-            serviceWorkerRegistered: true,
-            swRegistration: swReg || null
-          }, () => {
-            const { swRegistration } = this.state;
-            if (Notification.permission === 'granted' && swRegistration) {
-              this.askForPush();
-            }
-          });
-        }
-        return swReg;
-      }, console.error);
-    }
+    /* registers a service worker to run in the background */
+    window.ll('registerServiceWorker', (swReg) => {
+      /* if properly registered, a service worker registration is returned */
+      if (swReg) {
+        this.setState({
+          serviceWorkerEnabled: true,
+          serviceWorkerRegistered: true,
+          swRegistration: swReg || null
+        }, () => {
+          const { swRegistration } = this.state;
+          if (Notification.permission === 'granted' && swRegistration) {
+            this.askForPush();
+          }
+        });
+      }
+      return swReg;
+    }, console.error);
   };
 
   askForPush = () => {
     const { serviceWorkerEnabled, serviceWorkerRegistered } = this.state;
     if (serviceWorkerEnabled && serviceWorkerRegistered) {
+      /* prompt the user for web push. creates browser popup */
+      /* if user already had given permission, this will function as a no op */
       window.ll('subscribeToWebPush', (pushSubscription) => {
         if (pushSubscription) {
           this.setState(

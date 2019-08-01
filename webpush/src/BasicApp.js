@@ -10,8 +10,9 @@ const permissionColorMap = {
   default: blue,
   denied: red
 }
-
-class App extends React.Component {
+/* The simplest use case, using ll('registerPush') */
+/* An all in one ask for push permission, utilizing no soft ask strategy */
+class BasicApp extends React.Component {
 
   state = {
     readyForPush: false,
@@ -20,7 +21,10 @@ class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener('load', () => {
+      /* registerPush both registers a service worker and asks for push permission */
+      /* it takes 2 callbacks so your app can react to a success or failure */
       window.ll('registerPush',
+        /* on a successful registration and push ask */
         () => {
           console.log('Successfully registered for push!');
           this.setState({
@@ -28,6 +32,7 @@ class App extends React.Component {
             permissionState: Notification.permission
           });
         },
+        /* on a failed registration or push ask */
         (e) => {
           console.error('Failed to register for push', e);
           this.setState({
@@ -52,4 +57,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default BasicApp;

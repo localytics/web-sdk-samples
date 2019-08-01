@@ -15,11 +15,11 @@
       s.src = '//web.localytics.com/v4/localytics.min.js';
       (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
       var myLocalyticsKey = "YOUR_LOCALYTICS_APP_KEY";
-      var myWebPushPublicKey = "PUBLIC_KEY";
+      var myWebPushPublicKey = "YOUR_VAPID_PUBLIC_KEY_AS_DEFINED_IN_LOCALYTICS_DASHBOARD";
       ll(
         'init',
         myLocalyticsKey,
-        { publicKey: myWebPushPublicKey }
+        { publicKey: myWebPushPublicKey, allowLogs: true }
       );
     }(window, document, 'script', 'll');
   </script>
