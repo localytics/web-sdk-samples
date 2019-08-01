@@ -23,14 +23,14 @@
           l[i] = function() { (l[i].q = l[i].q || []).push(arguments) };
           l[i].t = +new Date;
           (s = y.createElement(t)).type = 'text/javascript';
-          s.src = '//web.localytics.com/v4/localytics.min.js';
+          s.src = 'https://web.localytics.com/v4/localytics.min.js';
           (c = y.getElementsByTagName(t)[0]).parentNode.insertBefore(s, c);
           console.log('is signed is: %s', readCookie(signedInKey) === 'true');
-          /* Unique initialization, check if a user is signed in before tracking */
-          var myLocalyticsKey = "YOUR-LOCALYTICS-APP-KEY";
+          var myLocalyticsKey = "94fa4da8d7e3c4792cea23a-f55df17e-ae42-11e9-fee6-007c928ca240";
           ll(
             'init',
             myLocalyticsKey,
+            /* Unique initialization, check if a user is signed in before tracking */
             { disableAnalyticsTracking: readCookie(signedInKey) !== 'true' }
           );
       }(window, document, 'script', 'll');
