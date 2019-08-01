@@ -81,6 +81,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <code>While not signed in, no events are uploaded. "sign in" to see events being tagged/</code>
         <h1>Tracking User State: <span style={{ color }}>{text}</span></h1>
         <div>
           <div>

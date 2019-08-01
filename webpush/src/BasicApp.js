@@ -52,6 +52,7 @@ class BasicApp extends React.Component {
         <h1>This Page Will Always Try To Ask For Push Permission</h1>
         <h2>Permission State: <span style={{ color: permissionColor }}>{permissionState}</span></h2>
         {readyForPush && <h3 style={{ color: green }}>Have Permission To Push!</h3>}
+        <code>replace <b style={{ background: 'wheat' }}>import App from './BasicApp';</b> with <b style={{ background: 'tomato' }}>import App from './AdvancedApp';</b> in <b style={{ background: 'grey', color: 'white' }}>src/index.js</b> for the soft ask use case</code>
       </div>
     );
   }
