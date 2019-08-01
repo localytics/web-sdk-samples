@@ -19,6 +19,9 @@
       ll(
         'init',
         myLocalyticsKey,
+        /* workerPath here is root, even though the worker file is in the /public directory. */
+        /* this is because this serves files from the /public directory from the root of the website. */
+        /* make sure you serve your service worker from root with your own server */
         { publicKey: myWebPushPublicKey, allowLogs: true, workerName: 'worker.js', workerPath: '/' }
       );
     }(window, document, 'script', 'll');
